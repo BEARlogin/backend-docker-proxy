@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+    environment:
+      NGINX_PROXY: ${NGINX_PROXY}
+    ports:
+      - "${HOST_PORT}:80"

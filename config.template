@@ -1,0 +1,11 @@
+server {
+    server_name localhost;
+    listen 80;
+    disable_symlinks off;
+    sendfile on;
+    sendfile_max_chunk 512k;
+    location / {
+        proxy_pass "${NGINX_PROXY}";
+        proxy_ssl_server_name on;
+    }
+}
