@@ -20,19 +20,22 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation and usage
 
-1. Copy .env.example to .env
+1. Clone repo
+
+
+2. Copy .env.example to .env
     ```sh
     cp .env.example .env
-   ``` 
+   ```
 
-2. Build and run docker-compose
+3. Build and run docker-compose
    ```sh
    docker-compose up -d --build
    ```
-3. Open [http://localhost:3001/todos/](http://localhost:3001/todos/) and see response from [https://jsonplaceholder.typicode.com/todos/](https://jsonplaceholder.typicode.com/todos/)
+4. Open [http://localhost:3001/todos/](http://localhost:3001/todos/) and see response from [https://jsonplaceholder.typicode.com/todos/](https://jsonplaceholder.typicode.com/todos/)
 
 
-4. Replace environments NGINX_PROXY and HOST_PORT for your purposes and repeat step 2
+5. Replace environments NGINX_PROXY and HOST_PORT for your purposes and repeat step 2
 
 
 5. PROFIT!
