@@ -1,29 +1,3 @@
-map $request_uri $proxy_uri {
-  ~*/http://(.*)/(.+)$  "http://$1/$2";
-  ~*/https://(.*)/(.+)$ "https://$1/$2";
-  ~*/http://(.*)$       "http://$1/";
-  ~*/https://(.*)$      "https://$1/";
-  ~*/(.*)/(.+)$         "https://$1/$2";
-  ~*/(.*)$              "https://$1/";
-  default               "";
-}
-
-map $proxy_uri $proxy_origin {
-  ~*(.*)/.*$ $1;
-  default    "";
-}
-
-map $remote_addr $proxy_forwarded_addr {
-  ~^[0-9.]+$        "for=$remote_addr";
-  ~^[0-9A-Fa-f:.]+$ "for=\"[$remote_addr]\"";
-  default           "for=unknown";
-}
-
-map $http_forwarded $proxy_add_forwarded {
-  ""      "$proxy_forwarded_addr";
-  default "$http_forwarded, $proxy_forwarded_addr";
-}
-
 server {
     server_name localhost;
     listen 80;
