@@ -7,5 +7,7 @@ services:
     environment:
       PROXY_TO: ${PROXY_TO}
       REPLACED_ORIGIN: ${REPLACED_ORIGIN}
+    expose:
+      - "${HOST_PORT}"
     ports:
-      - "${HOST_PORT}:80"
+      - "${HOST_PORT}:${HOST_PORT}"
