@@ -13,10 +13,10 @@ Having faced these problems more than once, I've made an image and compose for f
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Things you need to use the software and how to install them.
 * docker
 * docker-compose (or docker with compose plugin)
-
+* OR NodeJS 16+
 
 ### Installation and usage
 
