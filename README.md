@@ -28,9 +28,13 @@ This is an example of how to list things you need to use the software and how to
     cp .env.example .env
    ```
 
-3. Build and run docker-compose
+3. Build and run docker-compose or use NodeJS
    ```sh
    docker-compose up -d --build
+   ```
+   Or with NodeJS   
+   ```sh
+   npm install & npm run start
    ```
 4. Open [http://localhost:3001/todos/](http://localhost:3001/todos/) and see response from [https://jsonplaceholder.typicode.com/todos/](https://jsonplaceholder.typicode.com/todos/)
 
