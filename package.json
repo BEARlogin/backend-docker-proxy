@@ -1,7 +1,7 @@
 {
   "name": "dev-backend-proxy",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Proxy remote backend for local development with CORS and Cookies",
   "main": "bin/index.js",
   "scripts": {
     "start": "node main.js"
