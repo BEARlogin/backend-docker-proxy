@@ -1,10 +1,10 @@
-FROM nginx:1.22
-COPY config.template .
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+FROM node:18
+WORKDIR /app
+COPY package-lock.json .
+COPY package.json .
+RUN npm i
+COPY main.js .
 
 EXPOSE 80
 
-ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "main.js"]

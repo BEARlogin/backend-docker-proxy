@@ -1,10 +1,12 @@
-version: '3'
+version: '3.8'
 
 services:
-  nginx:
+  proxy:
     build:
       context: .
     environment:
-      NGINX_PROXY: ${NGINX_PROXY}
+      PROXY_TO: ${PROXY_TO}
+      ORIGIN: ${ORIGIN}
+      REPLACED_ORIGIN: ${REPLACED_ORIGIN}
     ports:
       - "${HOST_PORT}:80"

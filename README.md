@@ -35,8 +35,13 @@ This is an example of how to list things you need to use the software and how to
 4. Open [http://localhost:3001/todos/](http://localhost:3001/todos/) and see response from [https://jsonplaceholder.typicode.com/todos/](https://jsonplaceholder.typicode.com/todos/)
 
 
-5. Replace environments NGINX_PROXY and HOST_PORT for your purposes and repeat step 2
+5. Replace environments for your purposes and repeat step 2
 
+| **Env**         | **Description**                                    |
+|-----------------|----------------------------------------------------|
+| PROXY_TO        | Target                                             |
+| HOST_PORT       | Where service should listen                        |
+| REPLACED_ORIGIN | What origin we should use to replace Origin header |
 
 5. PROFIT!
 
