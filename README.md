@@ -20,6 +20,14 @@ Things you need to use the software and how to install them.
 
 ### Installation and usage
 
+## Run CLI with npx
+
+```shell
+npx dev-backend-proxy -t https://jsonplaceholder.typicode.com -r https://jsonplaceholder.typicode.com -p 3001
+```
+
+## Run with docker or NodeJS
+
 1. Clone repo
 
 
@@ -27,7 +35,6 @@ Things you need to use the software and how to install them.
     ```sh
     cp .env.example .env
    ```
-
 3. Build and run docker-compose or use NodeJS
    ```sh
    docker-compose up -d --build

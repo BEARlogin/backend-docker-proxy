@@ -32,6 +32,6 @@
     "@types/yargs": "^17.0.18"
   },
   "bin": {
-      "backend-proxy": "./bin/index.js"
+      "dev-backend-proxy": "./bin/index.js"
   }
 }
