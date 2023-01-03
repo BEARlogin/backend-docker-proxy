@@ -6,11 +6,12 @@
   "scripts": {
     "start": "node main.js"
   },
+  "keywords": ["developer","tools","proxy","backend"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BEARlogin/backend-docker-proxy.git"
   },
-  "author": "",
+  "author": "Andrey Lugovskoy",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/BEARlogin/backend-docker-proxy/issues"

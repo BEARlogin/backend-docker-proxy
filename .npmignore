@@ -1,0 +1,14 @@
+.gitignore
+.DS_Store
+.npmignore
+.eslintrc.js
+jest.config.js
+package-lock.json
+tsconfig.json
+src
+example
+.babelrc
+.github
+coverage
+docker-compose.yml
+Dockerfile
