@@ -6,7 +6,6 @@ services:
       context: .
     environment:
       PROXY_TO: ${PROXY_TO}
-      ORIGIN: ${ORIGIN}
       REPLACED_ORIGIN: ${REPLACED_ORIGIN}
     ports:
       - "${HOST_PORT}:80"
