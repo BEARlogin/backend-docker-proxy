@@ -15,6 +15,7 @@ function runApp(proxyTo,replacedOrigin,port) {
         },
         userResHeaderDecorator: function(headers, userReq) {
             headers['Access-Control-Allow-Origin'] = userReq.headers['origin'];
+            headers['Access-Control-Allow-Credentials'] = 'true'
             if(headers['set-cookie']) {
                 headers['set-cookie'] = headers['set-cookie'].map(cookie => {
                     cookie = cookie.replace(/domain=(.*)(;)/gmi, 'domain=localhost;').replace('secure', '');
