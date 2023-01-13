@@ -4,9 +4,12 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
+const limit = '1000000mb'
+
 function runApp(proxyTo,replacedOrigin,port) {
     app.use(cookieParser());
     app.use('/', proxy(proxyTo, {
+        limit,
         autoRewrite: true,
         proxyReqOptDecorator: function(proxyReqOpts) {
             proxyReqOpts.headers['Origin'] = replacedOrigin
@@ -26,7 +29,7 @@ function runApp(proxyTo,replacedOrigin,port) {
         }
     }));
     app.use(bodyParser.json({
-        limit: '1000000mb'
+        limit,
     }))
 
 
