@@ -6,7 +6,12 @@
   "scripts": {
     "start": "node main.js"
   },
-  "keywords": ["developer","tools","proxy","backend"],
+  "keywords": [
+    "developer",
+    "tools",
+    "proxy",
+    "backend"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BEARlogin/backend-docker-proxy.git"
@@ -25,6 +30,7 @@
     "express": "^4.18.2",
     "express-http-proxy": "^1.6.3",
     "express-static-proxy": "^1.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "yargs": "^17.6.2"
   },
   "devDependencies": {
@@ -32,6 +38,6 @@
     "@types/yargs": "^17.0.18"
   },
   "bin": {
-      "dev-backend-proxy": "./bin/index.js"
+    "dev-backend-proxy": "./bin/index.js"
   }
 }

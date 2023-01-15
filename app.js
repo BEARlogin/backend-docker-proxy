@@ -1,33 +1,38 @@
-const proxy = require('express-http-proxy');
 const app = require('express')();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config()
 
 const limit = '1000000mb'
 
 function runApp(proxyTo,replacedOrigin,port) {
     app.use(cookieParser());
-    app.use('/', proxy(proxyTo, {
-        limit,
+    app.use('/',createProxyMiddleware({
+        target: proxyTo,
+        changeOrigin: true,
         autoRewrite: true,
-        proxyReqOptDecorator: function(proxyReqOpts) {
-            proxyReqOpts.headers['Origin'] = replacedOrigin
-            proxyReqOpts.headers['Access-Control-Allow-Credentials'] = 'true'
-            return proxyReqOpts;
+        logLevel: 'debug',
+        ws: true,
+        onProxyReq: (proxyReq) => {
+            proxyReq.setHeader('Origin', replacedOrigin)
+            proxyReq.setHeader('Access-Control-Allow-Credentials','true')
         },
-        userResHeaderDecorator: function(headers, userReq) {
-            headers['Access-Control-Allow-Origin'] = userReq.headers['origin'];
-            headers['Access-Control-Allow-Credentials'] = 'true'
-            if(headers['set-cookie']) {
-                headers['set-cookie'] = headers['set-cookie'].map(cookie => {
+        onProxyRes: (proxyRes, req) => {
+            proxyRes.headers['Access-Control-Allow-Origin'] = req.headers['origin'];
+            proxyRes.headers['Access-Control-Allow-Credentials'] = 'true'
+            if(proxyRes.headers['set-cookie']) {
+                proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie'].map(cookie => {
                     cookie = cookie.replace(/domain=(.*)(;)/gmi, 'domain=localhost;').replace('secure', '');
                     return cookie
                 });
             }
-            return headers;
-        }
-    }));
+        },
+        onProxyReqWs:(proxyReq, req, socket, options, head) => {
+            proxyReq.setHeader('Origin', replacedOrigin)
+            proxyReq.setHeader('Access-Control-Allow-Credentials','true')
+        },
+    }))
     app.use(bodyParser.json({
         limit,
     }))
@@ -36,6 +41,7 @@ function runApp(proxyTo,replacedOrigin,port) {
     app.listen(port, () =>  {
         console.log(`Backend Proxy is listening on :${port}`)
     })
+
 }
 
 module.exports = {
