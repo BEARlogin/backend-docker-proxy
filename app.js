@@ -14,6 +14,9 @@ function runApp(proxyTo,replacedOrigin,port) {
         autoRewrite: true,
         logLevel: 'debug',
         ws: true,
+        cookieDomainRewrite: {
+            "*": "localhost"
+        },
         onProxyReq: (proxyReq) => {
             proxyReq.setHeader('Origin', replacedOrigin)
             proxyReq.setHeader('Access-Control-Allow-Credentials','true')
@@ -21,12 +24,6 @@ function runApp(proxyTo,replacedOrigin,port) {
         onProxyRes: (proxyRes, req) => {
             proxyRes.headers['Access-Control-Allow-Origin'] = req.headers['origin'];
             proxyRes.headers['Access-Control-Allow-Credentials'] = 'true'
-            if(proxyRes.headers['set-cookie']) {
-                proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie'].map(cookie => {
-                    cookie = cookie.replace(/domain=(.*)(;)/gmi, 'domain=localhost;').replace('secure', '');
-                    return cookie
-                });
-            }
         },
         onProxyReqWs:(proxyReq, req, socket, options, head) => {
             proxyReq.setHeader('Origin', replacedOrigin)
